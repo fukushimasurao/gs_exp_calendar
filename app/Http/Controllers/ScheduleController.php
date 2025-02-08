@@ -72,4 +72,29 @@ class ScheduleController extends Controller
         $schedule->delete();
         return redirect()->route('todo-list')->with('success', 'Schedule deleted successfully');
     }
+
+    public function edit($id)
+    {
+        $schedule = Schedule::findOrFail($id);
+        return view('schedule-edit', ['schedule' => $schedule]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'event_name' => 'required|max:32',
+            'details' => 'nullable|string|max:1024',
+        ]);
+
+        $schedule = Schedule::findOrFail($id);
+        $schedule->start_date = $request->input('start_date');
+        $schedule->end_date = $request->input('end_date');
+        $schedule->event_name = $request->input('event_name');
+        $schedule->details = $request->input('details');
+        $schedule->save();
+
+        return redirect()->route('schedules.show', $schedule->id)->with('success', 'Schedule updated successfully');
+    }
 }

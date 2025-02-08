@@ -14,6 +14,7 @@
                     <p><strong>End Date:</strong> {{ $schedule->end_date }}</p>
                     <div><strong>Details:</strong></div>
                     <div>{!! nl2br(e($schedule->details)) !!}</div>
+                    <a href="{{ route('schedules.edit', $schedule->id) }}" class="text-blue-500 hover:text-blue-700 mt-4 inline-block">編集</a>
                     <a href="{{ route('todo-list') }}" class="text-blue-500 hover:text-blue-700 mt-4 inline-block">戻る</a>
                 </div>
             </div>
