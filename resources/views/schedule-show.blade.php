@@ -12,6 +12,8 @@
                     <h3 class="text-lg font-bold mb-4">{{ $schedule->event_name }}</h3>
                     <p><strong>Start Date:</strong> {{ $schedule->start_date }}</p>
                     <p><strong>End Date:</strong> {{ $schedule->end_date }}</p>
+                    <div><strong>Details:</strong></div>
+                    <div>{!! nl2br(e($schedule->details)) !!}</div>
                     <a href="{{ route('todo-list') }}" class="text-blue-500 hover:text-blue-700 mt-4 inline-block">戻る</a>
                 </div>
             </div>
