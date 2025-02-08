@@ -33,11 +33,13 @@
                             <textarea id="details" name="details" maxlength="1024">{{ $schedule->details }}</textarea>
                         </div>
 
-                        <div>
-                            <button type="submit">更新</button>
+                        <div class="mt-4">
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">更新</button>
+                            <a href="{{ route('schedules.show', $schedule->id) }}">
+                                <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">戻る</button>
+                            </a>
                         </div>
                     </form>
-                    <a href="{{ route('schedules.show', $schedule->id) }}" class="text-blue-500 hover:text-blue-700 mt-4 inline-block">戻る</a>
                 </div>
             </div>
         </div>
