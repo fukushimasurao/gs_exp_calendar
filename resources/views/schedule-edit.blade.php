@@ -13,24 +13,24 @@
                         @csrf
                         @method('PATCH')
 
-                        <div>
-                            <label for="event_name">Event Name</label>
-                            <input type="text" id="event_name" name="event_name" value="{{ $schedule->event_name }}" required>
+                        <div class="mb-4">
+                            <label for="event_name" class="block text-sm font-medium text-gray-700">Event Name</label>
+                            <input type="text" id="event_name" name="event_name" value="{{ $schedule->event_name }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         </div>
 
-                        <div>
-                            <label for="start_date">Start Date</label>
-                            <input type="date" id="start_date" name="start_date" value="{{ $schedule->start_date }}" required>
+                        <div class="mb-4">
+                            <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                            <input type="date" id="start_date" name="start_date" value="{{ $schedule->start_date }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         </div>
 
-                        <div>
-                            <label for="end_date">End Date</label>
-                            <input type="date" id="end_date" name="end_date" value="{{ $schedule->end_date }}" required>
+                        <div class="mb-4">
+                            <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
+                            <input type="date" id="end_date" name="end_date" value="{{ $schedule->end_date }}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         </div>
 
-                        <div>
-                            <label for="details">Details</label>
-                            <textarea id="details" name="details" maxlength="1024">{{ $schedule->details }}</textarea>
+                        <div class="mb-4">
+                            <label for="details" class="block text-sm font-medium text-gray-700">Details</label>
+                            <textarea id="details" name="details" rows="5" maxlength="1024" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ $schedule->details }}</textarea>
                         </div>
 
                         <div class="mt-4">
