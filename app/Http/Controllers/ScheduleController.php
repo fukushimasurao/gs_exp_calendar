@@ -59,4 +59,17 @@ class ScheduleController extends Controller
         $schedules = Schedule::all();
         return view('todo-list', ['schedules' => $schedules]);
     }
+
+    public function show($id)
+    {
+        $schedule = Schedule::findOrFail($id);
+        return view('schedule-show', ['schedule' => $schedule]);
+    }
+
+    public function destroy($id)
+    {
+        $schedule = Schedule::findOrFail($id);
+        $schedule->delete();
+        return redirect()->route('todo-list')->with('success', 'Schedule deleted successfully');
+    }
 }

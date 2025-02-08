@@ -16,6 +16,7 @@
                             <th class="py-2 px-4 border-b">イベント名</th>
                             <th class="py-2 px-4 border-b">開始日</th>
                             <th class="py-2 px-4 border-b">終了日</th>
+                            <th class="py-2 px-4 border-b">アクション</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -24,6 +25,14 @@
                                 <td class="py-2 px-4 border-b">{{ $schedule->event_name }}</td>
                                 <td class="py-2 px-4 border-b">{{ $schedule->start_date }}</td>
                                 <td class="py-2 px-4 border-b">{{ $schedule->end_date }}</td>
+                                <td class="py-2 px-4 border-b">
+                                    <a href="{{ route('schedules.show', $schedule->id) }}" class="text-blue-500 hover:text-blue-700">詳細</a>
+                                    <form action="{{ route('schedules.destroy', $schedule->id) }}" method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="ml-2 text-red-500 hover:text-red-700">削除</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

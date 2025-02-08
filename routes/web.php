@@ -25,7 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/schedule-get', [ScheduleController::class, 'scheduleGet'])->name('schedule-get');
 
     Route::get('/todo-list', [ScheduleController::class, 'todoList'])->name('todo-list');
-
+    Route::get('/schedules/{id}', [ScheduleController::class, 'show'])->name('schedules.show');
+    Route::delete('/schedules/{id}', [ScheduleController::class, 'destroy'])->name('schedules.destroy');
 
 });
 
