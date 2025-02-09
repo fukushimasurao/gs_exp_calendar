@@ -18,9 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/calendar', function () {
-        return view('calendar');
-    });
+    Route::post('/calendar', [ScheduleController::class, 'scheduleAdd'])->name('schedule-add');
 
     Route::post('/schedule-add', [ScheduleController::class, 'scheduleAdd'])->name('schedule-add');
     Route::post('/schedule-get', [ScheduleController::class, 'scheduleGet'])->name('schedule-get');
