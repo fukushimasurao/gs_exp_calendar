@@ -1,4 +1,24 @@
+
+# Gemini API キーの取得方法
+
+## 1. Google AI Studio にアクセス
+[Google AI Studio](https://aistudio.google.com/) にアクセスし、Google アカウントでログイン。
+
+## 2. API キーを取得
+1. 「API キー」タブを開く。
+2. 「新しい API キーを作成」をクリック。
+3. API キーが発行されるので、コピーして `.env` に追加。
+
+## 3. `.env` に API キーを追加
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+---
+
 # gs_exp_calendar セットアップ手順
+
+---
 
 ## 1. リポジトリのクローン
 ```sh
@@ -23,15 +43,13 @@ alias sail='bash vendor/bin/sail'
 ```
 
 ## 4. `.env` の設定確認
-`.env` 内の `DB_HOST` を `mysql` に設定:
+.envは別途渡します。
+
+GEMINI_API_KEYもこの時設定してください。
 ```env
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=nemesys
-DB_USERNAME=sail
-DB_PASSWORD=password
+GEMINI_API_KEY=your_api_key_here
 ```
+
 コンテナを再起動する場合:
 ```sh
 sail down
@@ -53,7 +71,7 @@ sail artisan key:generate
 sail artisan migrate
 ```
 
-## 10. フロントエンドのセットアップ（必要な場合）
+## 8. フロントエンドのセットアップ（必要な場合）
 ```sh
 sail npm install
 sail npm run dev
@@ -70,22 +88,4 @@ sail up -d
 sudo chmod -R 777 storage bootstrap/cache
 ```
 
-
-
----
-
-# Gemini API キーの取得方法
-
-## 1. Google AI Studio にアクセス
-[Google AI Studio](https://aistudio.google.com/) にアクセスし、Google アカウントでログイン。
-
-## 2. API キーを取得
-1. 「API キー」タブを開く。
-2. 「新しい API キーを作成」をクリック。
-3. API キーが発行されるので、コピーして `.env` に追加。
-
-## 3. `.env` に API キーを追加
-```env
-GEMINI_API_KEY=your_api_key_here
-```
 
