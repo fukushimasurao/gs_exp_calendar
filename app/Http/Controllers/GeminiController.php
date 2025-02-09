@@ -8,15 +8,28 @@ use Gemini\Laravel\Facades\Gemini;
 
 class GeminiController extends Controller
 {
-    public function generateResponse()
+//    public function generateResponse()
+//    {
+//        $result = Gemini::geminiPro()->generateContent('こんにちは。椎茸を利用したおすすめのレシピ教えてください。');
+//        $markdownText = $result->text();
+//
+//        // Blade に渡すために、HTML に変換
+//        $html = Str::markdown($markdownText);
+//
+//        // Blade にデータを渡す
+//        return view('gemini-response', ['response' => $html]);
+//    }
+
+    public function generateResponse(Request $request)
     {
-        $result = Gemini::geminiPro()->generateContent('こんにちは。椎茸を利用したおすすめのレシピ教えてください。');
+        $query = $request->input('ai_query');
+        $result = Gemini::geminiPro()->generateContent($query);
         $markdownText = $result->text();
 
-        // Blade に渡すために、HTML に変換
+        // Convert Markdown to HTML
         $html = Str::markdown($markdownText);
 
-        // Blade にデータを渡す
+        // Pass data to the Blade view
         return view('gemini-response', ['response' => $html]);
     }
 }

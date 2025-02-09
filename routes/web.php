@@ -30,8 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/schedules/{id}/edit', [ScheduleController::class, 'edit'])->name('schedules.edit');
     Route::patch('/schedules/{id}', [ScheduleController::class, 'update'])->name('schedules.update');
 
-    Route::get('/gemini-response', [GeminiController::class, 'generateResponse'])->name('gemini.response');
+//    Route::get('/gemini-response', [GeminiController::class, 'generateResponse'])->name('gemini.response');
 
+    Route::post('/gemini-response', [GeminiController::class, 'generateResponse'])->name('gemini.response');
 });
 
 require __DIR__.'/auth.php';
