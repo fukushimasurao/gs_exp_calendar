@@ -33,6 +33,11 @@ Route::middleware('auth')->group(function () {
 //    Route::get('/gemini-response', [GeminiController::class, 'generateResponse'])->name('gemini.response');
 
     Route::post('/gemini-response', [GeminiController::class, 'generateResponse'])->name('gemini.response');
+
+
+    Route::get('/ai-consult', [GeminiController::class, 'showConsultPage'])->name('ai-consult');
+    Route::post('/gemini-response', [GeminiController::class, 'generateResponse'])->name('gemini.response');
+
 });
 
 require __DIR__.'/auth.php';

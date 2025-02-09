@@ -20,6 +20,24 @@ class GeminiController extends Controller
 //        return view('gemini-response', ['response' => $html]);
 //    }
 
+//    public function generateResponse(Request $request)
+//    {
+//        $query = $request->input('ai_query');
+//        $result = Gemini::geminiPro()->generateContent($query);
+//        $markdownText = $result->text();
+//
+//        // Convert Markdown to HTML
+//        $html = Str::markdown($markdownText);
+//
+//        // Pass data to the Blade view
+//        return view('gemini-response', ['response' => $html]);
+//    }
+
+    public function showConsultPage()
+    {
+        return view('ai-consult');
+    }
+
     public function generateResponse(Request $request)
     {
         $query = $request->input('ai_query');
@@ -30,6 +48,6 @@ class GeminiController extends Controller
         $html = Str::markdown($markdownText);
 
         // Pass data to the Blade view
-        return view('gemini-response', ['response' => $html]);
+        return view('ai-consult', ['response' => $html]);
     }
 }

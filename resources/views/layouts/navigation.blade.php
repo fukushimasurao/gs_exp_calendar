@@ -22,6 +22,13 @@
                         {{ __('TODO一覧') }}
                     </x-nav-link>
                 </div>
+
+            </div>
+
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('ai-consult')" :active="request()->routeIs('ai-consult')">
+                    {{ __('AIに相談') }}
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->
