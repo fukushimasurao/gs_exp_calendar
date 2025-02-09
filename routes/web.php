@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\GeminiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,6 +31,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/schedules/{id}/edit', [ScheduleController::class, 'edit'])->name('schedules.edit');
     Route::patch('/schedules/{id}', [ScheduleController::class, 'update'])->name('schedules.update');
+
+    Route::get('/gemini-response', [GeminiController::class, 'generateResponse'])->name('gemini.response');
+
 });
 
 require __DIR__.'/auth.php';
