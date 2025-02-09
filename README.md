@@ -1,3 +1,11 @@
+# 前提
+
+- docker と sail がインストールされていること。
+
+# 全体の流れ。
+
+- Gemini API キーの取得
+- laravelセットアップ。
 
 # Gemini API キーの取得方法
 
