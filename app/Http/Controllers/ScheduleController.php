@@ -41,7 +41,7 @@ class ScheduleController extends Controller
         $end_date = date('Y-m-d', $request->input('end_date') / 1000);
 
         // 登録処理
-        return Schedule::query()
+        $schedules = Schedule::query()
             ->select(
             // FullCalendarの形式に合わせる
                 'start_date as start',
@@ -52,6 +52,21 @@ class ScheduleController extends Controller
             ->where('end_date', '>', $start_date)
             ->where('start_date', '<', $end_date)
             ->get();
+
+        // 終日の予定を判別して変換
+        $schedules = $schedules->map(function ($event) {
+            $startDate = new \DateTime($event->start);
+            $endDate = new \DateTime($event->end);
+
+            if ($startDate->format('H:i:s') === '00:00:00' && $endDate->format('H:i:s') === '00:00:00') {
+                $event->start = $startDate->format('Y-m-d');
+                $event->end = $endDate->format('Y-m-d');
+            }
+
+            return $event;
+        });
+
+        return $schedules;
     }
 
     public function todoList()
