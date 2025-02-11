@@ -74,7 +74,9 @@ class ScheduleController extends Controller
 
     public function todoList()
     {
-        $schedules = Schedule::orderBy('start_date', 'asc')->get();
+        $schedules = Schedule::where('user_id', Auth::id())
+            ->orderBy('start_date', 'asc')
+            ->get();
         return view('todo-list', ['schedules' => $schedules]);
     }
 
