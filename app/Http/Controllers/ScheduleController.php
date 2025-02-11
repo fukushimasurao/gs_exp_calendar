@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Schedule;
+use Illuminate\Support\Facades\Auth;
 
 
 class ScheduleController extends Controller
@@ -23,6 +24,7 @@ class ScheduleController extends Controller
         $schedule->start_date = date('Y-m-d H:i:s', $request->input('start_date') / 1000);
         $schedule->end_date = date('Y-m-d H:i:s', $request->input('end_date') / 1000);
         $schedule->event_name = $request->input('event_name');
+        $schedule->user_id = Auth::id(); // ログインユーザーのIDを設定
         $schedule->save();
 
         return;
@@ -51,6 +53,7 @@ class ScheduleController extends Controller
             // FullCalendarの表示範囲のみ表示
             ->where('end_date', '>', $start_date)
             ->where('start_date', '<', $end_date)
+            ->where('user_id', Auth::id()) // ログインユーザーのスケジュールのみ取得
             ->get();
 
         // 終日の予定を判別して変換
